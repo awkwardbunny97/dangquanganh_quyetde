@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ask</title>
+</head>
+<body>
+    <h1>Input your yes/no question</h1>
+    <form action="/add-question" method="POST">
+        <textarea name = 'question' id ='inputForm' cols = '30' rows='10'></textarea>
+        <span id = 'charactersRemaining'> 200/200 characters </span>
+        <input type = 'submit'>
+    </form>
+    
+    <script>
+        var el
+        function countCharacters() {
+            var textEntered, countRemaining, counter;
+            textEntered = document.getElementById('inputForm').value;
+            document.getElementById('inputForm').setAttribute('maxlength',200)
+            counter = ( 200 - (textEntered.length) + ' /200 characters');
+            countRemaining = document.getElementById('charactersRemaining');
+            countRemaining.textContent = counter;
+        }
+        el = document.getElementById('inputForm');
+        el.addEventListener('keyup',countCharacters,false)
+    </script>
+</body>
+</html>
